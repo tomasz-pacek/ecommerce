@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Public_Sans } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/components/providers/query-provider";
-
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 const publicSans = Public_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
@@ -16,9 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={publicSans.variable}>
+    <html lang="en" className={publicSans.variable} suppressHydrationWarning>
       <body className={`antialiased`}>
-        <QueryProvider>{children}</QueryProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <QueryProvider>{children}</QueryProvider>
+        </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
