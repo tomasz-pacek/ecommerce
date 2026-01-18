@@ -53,7 +53,7 @@ export default function LoginForm() {
           setIsSubmitting(false);
           toast(ctx.error.message || "Error logging in user");
         },
-      }
+      },
     );
   };
 
@@ -107,8 +107,9 @@ export default function LoginForm() {
         />
       </FieldGroup>
       <ActionButton
-        className="w-full cursor-pointer mt-6"
+        className="mt-6 w-full cursor-pointer"
         content="Login"
+        disabled={isSubmitting}
         isPendingContent="Loggin in..."
         isPending={isSubmitting}
         type="submit"

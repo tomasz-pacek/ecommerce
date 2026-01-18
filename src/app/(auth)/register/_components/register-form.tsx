@@ -21,8 +21,10 @@ import { EyeClosedIcon, EyeIcon } from "lucide-react";
 import ActionButton from "@/components/action-button";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
+  const router = useRouter();
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState<boolean>(false);
@@ -50,12 +52,13 @@ export default function RegisterForm() {
         onSuccess: () => {
           setIsSubmitting(false);
           toast("User registered successfully!");
+          router.push("/");
         },
         onError: (ctx) => {
           setIsSubmitting(false);
           toast(ctx.error.message || "Error registering user");
         },
-      }
+      },
     );
   };
 
@@ -158,6 +161,7 @@ export default function RegisterForm() {
       <ActionButton
         content="Register"
         className="mt-6 w-full cursor-pointer"
+        disabled={isSubmitting}
         isPending={isSubmitting}
         isPendingContent="Registering..."
         type="submit"
