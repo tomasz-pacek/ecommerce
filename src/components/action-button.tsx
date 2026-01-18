@@ -8,6 +8,16 @@ type Props = {
   isPending?: boolean;
   isPendingContent?: string;
   type?: "button" | "submit" | "reset";
+  variant?:
+    | "default"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "destructive"
+    | "link";
+  size?: "default" | "xs" | "sm" | "lg" | "icon";
+  onClick?: () => void;
+  disabled?: boolean;
 };
 
 export default function ActionButton({
@@ -16,9 +26,20 @@ export default function ActionButton({
   isPending,
   isPendingContent,
   type,
+  variant,
+  size,
+  onClick,
+  disabled,
 }: Props) {
   return (
-    <Button className={className} disabled={isPending} type={type}>
+    <Button
+      className={className}
+      disabled={disabled}
+      type={type}
+      variant={variant}
+      size={size}
+      onClick={onClick}
+    >
       {isPending ? isPendingContent : content}
     </Button>
   );

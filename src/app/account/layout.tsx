@@ -15,7 +15,7 @@ export default async function AccountLayout({ children }: Props) {
   return (
     <>
       <NavbarServer />
-      <div className="container mx-auto flex items-center justify-center gap-x-8 pt-24">
+      <div className="container mx-auto flex items-start justify-center gap-x-8 pt-24">
         <aside className="shrink-0 lg:w-72">
           <div className="bg-card border-border sticky top-24 rounded-2xl border p-6">
             {/* User Info */}
@@ -41,7 +41,7 @@ export default async function AccountLayout({ children }: Props) {
             </div>
           </div>
         </aside>
-        <main className="flex-1">{children}</main>
+        <main className="min-w-0 flex-1">{children}</main>
       </div>
     </>
   );
