@@ -7,7 +7,7 @@ type Props = {
 
 export default function CardWrapper({ children, cardTitle }: Props) {
   return (
-    <Card className="w-1/4">
+    <Card className="mx-4 w-full max-w-md">
       <CardHeader className="text-center">
         <CardTitle className="text-xl">{cardTitle}</CardTitle>
       </CardHeader>
